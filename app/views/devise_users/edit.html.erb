@@ -1,0 +1,8 @@
+<% content_for :title, 'ユーザー編集画面' %>
+
+<%= render "shared/error_messages", model: @user %>
+<%= form_for(@user, url: :user, method: :put,
+    :html => { class: "form-horizontal",role: "form" }) do |f| %>
+    <%= render 'registration', f: f %>
+    <%= f.submit :admin_customers, value: '登録', class: 'btn' %>
+<% end %>

@@ -1,0 +1,14 @@
+<% if elements.present? %>
+<ul class="breadcrumb" id="">
+<li class=""><%= link_to "HOME", root_path %></li>
+<% elements.each do |element| %>
+  <li class="">
+    <% if element.path.present? %>
+      <%= link_to element.name, element.path %>
+    <% else %>
+      <%= element.name %>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+<% end %>

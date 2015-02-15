@@ -1,0 +1,8 @@
+<% content_for :title, '施設管理者編集画面' %>
+
+<%= render "shared/error_messages", model: @form %>
+<%= form_for(@form, url: :operator, method: :put,
+    :html => { class: "form-horizontal",role: "form" }) do |f| %>
+    <%= render 'registration', f: f %>
+    <%= f.submit :operators, value: '登録', class: 'btn' %>
+<% end %>

@@ -1,0 +1,104 @@
+<% content_for :title, @muryo.name %>
+<table class="table table-bordered">
+    <tr>
+      <th>id</th>
+      <td><%=@muryo.id %></td>
+    </tr>
+    <tr>
+      <th>施設名</th>
+      <td><%=@muryo.name %></td>
+    </tr>
+    <tr>
+      <th>院長名</th>
+      <td><%=@muryo.master_name %></td>
+    </tr>
+    <tr>
+      <th>email</th>
+      <td><%=@muryo.email %></td>
+    </tr>
+    <tr>
+      <th>TEL</th>
+      <td><%=@muryo.tel %></td>
+    </tr>
+    <tr>
+      <th>住所</th>
+      <td><%=@muryo.address1 %></td>
+    </tr>
+    <tr>
+      <th>登録日</th>
+      <td><%=@muryo.created_at.strftime('%Y-%m-%d') %></td>
+    </tr>
+</table>
+
+
+<% if @operators.count > 0 or @directories.count > 0 %>
+<div class="well">
+この登録はできません。お客様へ確認をお願いします。
+</div>
+<% else %>
+<%= link_to 'この施設を新規登録する', add_directories_path(muryo_id: @muryo.id), class: "btn btn-default" %>
+<% end %>
+
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-lg-6">
+          <h2>登録状況(施設)</h2>
+            <% if @directories.count > 0 %>
+            <p>この電話番号では下記の施設がすでに登録されています。</p>
+              <% for d in @directories %>
+              <table class="table table-bordered">
+                <tr>
+                  <th>施設名</th>
+                  <td><%=d.name %></td>
+                </tr>
+                <tr>
+                  <th>院長名</th>
+                  <td><%=d.master_name %></td>
+                </tr>
+                <tr>
+                  <th>電話番号</th>
+                  <td><%=d.tel %></td>
+                </tr>
+                <tr>
+                  <th>管理アカウント</th>
+                  <td><%=d.operator.email %></td>
+                </tr>
+                <tr>
+                  <th>管理アカウント</th>
+                  <td><%=d.operator.id %></td>
+                </tr>
+              </table>
+              <% end %>
+            <% else %>
+            <p>この電話番号では登録されておりません。</p>
+            <% end %>
+        </div>
+        <div class="col-lg-6">
+          <h2>登録状況(管理アカウント)</h2>
+          <% if @operators.count > 0 %>
+          <p>このemailでは下記の施設がすでに登録されています。</p>
+            <% for o in @operators %>
+            <table class="table table-bordered">
+              <tr>
+                <th>管理アカウント</th>
+                <td><%=o.email %></td>
+              </tr>
+              <tr>
+                <th>管理アカウント</th>
+                <td><%=o.id %></td>
+              </tr>
+              <tr>
+                <th>施設</th>
+                <td><%=link_to o.directory.name, "http://rirakomi.jp/detail/#{o.directory.id}" %></td>
+              </tr>
+            </table>
+            <% end %>
+          <% else %>
+          <p>この電話番号では登録されておりません。</p>
+          <% end %>
+       </div>
+      </div>
+
+
+
+

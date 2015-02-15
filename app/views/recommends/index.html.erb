@@ -1,0 +1,35 @@
+<% content_for :title, '投票' %>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>施設</th>
+    <th>おすすめコメント</th>
+    <th>オススメ度</th>
+    <th>設備</th>
+    <th>施術技術</th>
+    <th>店舗での対応</th>
+    <th>電話やメールでの対応</th>
+    <th>料金</th>
+    <th>有効・無効</th>
+    <th>編集</th>
+  </tr>
+  </thead> 
+  <% @recommends.each do |recommend| %>
+    <tbody>
+      <tr>
+        <th><%=recommend.id %></th>
+        <th><%=recommend.directory.name %></th>
+        <th><%=recommend.good_comment %></th>
+        <th><%=recommend.total_point %></th>
+        <th><%=recommend.setubi_point %></th>
+        <th><%=recommend.gijyutu_point %></th>
+        <th><%=recommend.tenpo_point %></th>
+        <th><%=recommend.tel_point %></th>
+        <th><%=recommend.ryoukin_point %></th>
+        <th><%=recommend.visible %></th>
+        <th><%= link_to '編集', edit_recommend_path(recommend),class: "btn btn-default" %></th>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

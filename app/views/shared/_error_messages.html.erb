@@ -1,0 +1,7 @@
+<% if model.errors.any? %>
+  <div class="alert alert-warning">
+    <% model.errors.keys.each do |attr| %>
+      <p><%= model.errors.full_messages_for(attr).first %></p>
+    <% end %>
+  </div>
+<% end %>

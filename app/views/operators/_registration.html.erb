@@ -1,0 +1,6 @@
+<div class="form-group">
+  <label class="col-lg-2">施設</label>
+  <div class="col-lg-10">
+        <%= f.collection_select :contacts_category_id, ContactsCategory.all, :id, :name, { prompt: "お問い合わせの種類を選択してください。" }, {:class => 'form-control'} %>
+  </div>
+</div>

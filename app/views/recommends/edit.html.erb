@@ -1,0 +1,8 @@
+<% content_for :title, '投票' %>
+
+<%= render "shared/error_messages", model: @recommend %>
+<%= form_for(@recommend, url: :recommend, method: :put,
+    :html => { class: "form-horizontal",role: "form" }) do |f| %>
+    <%= render 'registration', f: f %>
+    <%= f.submit :recommends, value: '登録', class: 'btn' %>
+<% end %>

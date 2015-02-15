@@ -1,0 +1,28 @@
+<!-- Matter -->
+<% content_for :title, '無料登録' %>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>施設名</th>
+    <th>電話</th>
+    <th>住所</th>
+    <th>email</th>
+    <th>処理日</th>
+    <th>管理画面へ</th>
+  </tr>
+  </thead> 
+  <% @lists.each do |list| %>
+    <tbody>
+      <tr>
+        <th><%=list.id %></th>
+        <th><%=list.name %></th>
+        <th><%=list.tel %></th>
+        <th><%=list.address1 %></th>
+        <th><%=list.email %></th>
+        <th><%=list.copied_at.strftime('%Y-%m-%d') if list.copied_at.present? %></th>
+        <th><%= link_to '詳細', muryo_path(list) %></th>
+      </tr>
+    </tbody>
+  <% end %>
+</table>

@@ -1,0 +1,27 @@
+<% content_for :title, 'ユーザー' %>
+<%= render 'search_box' %>
+<table class="table table-bordered">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>お名前</th>
+    <th>メールアドレス</th>
+    <th>登録日</th>
+    <th>最終ログイン日時</th>
+  </tr>
+  </thead> 
+  <% @lists.each do |list| %>
+    <tbody>
+      <tr>
+        <th><%=list.id %></th>
+        <th><%=list.username %></th>
+        <th><%=list.email %></th>
+        <th><%=list.created_at.strftime('%Y-%m-%d') %></th>
+        <th><%=list.last_sign_in_at.strftime('%Y-%m-%d %H:%m') if list.last_sign_in_at.present? %></th>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
+<ul class="pagination">
+<%= paginate @lists %>
+</ul> 

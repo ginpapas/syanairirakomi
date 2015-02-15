@@ -1,0 +1,12 @@
+<%= form_for(@search, url: :search_directories, method: :get, :html => { class: "form-horizontal", role: "form"}) do |f| %>
+        <div class="form-group">
+          <label class="col-lg-2">名称</label>
+          <div class="col-lg-2">
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          一部を入力するだけでも検索できます
+        </div>
+
+    <%= f.submit value: '検索', class: 'btn btn-success' %>
+<br/>
+    <% end %>

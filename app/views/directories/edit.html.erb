@@ -1,0 +1,7 @@
+<% content_for :title, '施設' %>
+<%= render "shared/error_messages", model: @form %>
+<%= form_for(@form, url: :directory, method: :put,
+    :html => { class: "form-horizontal",role: "form" }) do |f| %>
+    <%= render 'registration', f: f %>
+    <%= f.submit :directories, value: '登録', class: 'btn' %>
+<% end %>
